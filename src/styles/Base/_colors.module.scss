@@ -3,6 +3,14 @@ $background: #242424;
 $off-white: #b4b2b2;
 $white: #f3f6f7;
 $black: #000;
+$red: #d80000;
+$grey: #545454;
 
 // Gradients
 $primary-gradient: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+$secondary-gradient: linear-gradient(
+  225deg,
+  #ff3caa5b 0%,
+  #784ba0 50%,
+  #2b86c5 100%
+);

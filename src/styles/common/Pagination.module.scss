@@ -1,0 +1,67 @@
+@use "@Styles/Base" as *;
+
+.paginationContainer {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  font-size: $font-14;
+  @include responsive($screen-768) {
+    font-size: $font-14;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+
+    li {
+      a {
+        text-decoration: none;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 3.2rem;
+        height: 3.2rem;
+        background-color: $black;
+        border-radius: 2.5rem;
+        color: $white;
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          background-color: $black;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .paginationContainerActive {
+    background-color: $black;
+    color: $white;
+  }
+
+  .paginationContainerPrev,
+  .paginationContainerNext {
+    background-color: transparent;
+    color: $white;
+    width: 100px;
+    display: none;
+
+    @include responsive($screen-768) {
+      display: flex;
+    }
+  }
+
+  .paginationContainerPrev {
+    svg {
+      transform: scale(2) rotate(90deg);
+    }
+  }
+  .paginationContainerNext {
+    svg {
+      transform: scale(2) rotate(-90deg);
+    }
+  }
+}

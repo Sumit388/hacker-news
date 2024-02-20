@@ -10,20 +10,26 @@ $distance-between-elemens: 12px;
 
   .filterContainer {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: $distance-between-elemens;
 
     .searchField {
       background: $off-white;
       border: none;
-      padding: 10px;
+      padding: 11px;
       border-radius: 8px;
       width: 100%;
-      margin-top: $distance-between-elemens;
+      outline: none;
 
       @include responsive($screen-768) {
         max-width: 600px;
       }
+    }
+
+    .sortByContainer {
+      width: 200px;
     }
   }
 
@@ -57,5 +63,53 @@ $distance-between-elemens: 12px;
   .borderLine {
     margin-top: 24px;
     border-bottom: 0.5px solid $off-white;
+  }
+
+  .dataContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: $distance-between-elemens;
+    gap: $distance-between-elemens;
+
+    .dataEntry {
+      @include elevate();
+      margin: 6px 0px;
+      padding: 20px;
+      border-radius: 16px;
+      background: $secondary-gradient;
+
+      h2 {
+        font-size: $font-20;
+        color: $white;
+      }
+
+      p {
+        font-size: $font-16;
+        font-weight: 600;
+      }
+
+      .utils {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+
+        .time {
+          font-size: $font-12;
+          font-weight: 600;
+          color: $off-white;
+        }
+
+        button {
+          background: transparent;
+          border: none;
+          text-decoration: underline;
+          font-size: $font-12;
+          font-weight: 600;
+          color: $black;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }

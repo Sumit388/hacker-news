@@ -1,0 +1,109 @@
+@use "@Styles/Base" as *;
+
+.autoCompleteContainer {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+  input {
+    position: relative;
+    display: block;
+    width: 100%;
+    border: 1px solid rgba($black, 0.37);
+    border-radius: 8px;
+    background-color: $off-white;
+    margin: 4px auto;
+    padding: 10px 0 4px 16px;
+    height: 24px;
+    outline: none;
+    font-size: $font-12;
+    color: rgba($black, 0.85);
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    letter-spacing: 0;
+    text-overflow: ellipsis;
+  }
+
+  .clearButton {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    background: transparent;
+    color: $grey;
+    border: none;
+    cursor: pointer;
+  }
+
+  label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    text-align: left;
+    display: inline-block;
+    padding: 0 4px;
+    height: 10px;
+    line-height: 14px;
+    font-size: $font-12;
+    font-weight: 500;
+    color: rgba($black, 0.4);
+    letter-spacing: 0;
+    margin: 0px auto;
+    cursor: text;
+    transition: all 0.15s ease-in-out;
+  }
+
+  input:hover,
+  input:focus {
+    border: 1px solid $black;
+  }
+
+  input:valid + label,
+  input:focus + label {
+    top: 2px;
+    font-size: $font-12;
+    color: rgba($black, 0.5);
+  }
+
+  .inputAsterisk {
+    background-color: inherit;
+    color: $red;
+    padding: 0;
+    padding-left: 3px;
+  }
+
+  .inputAsterisk {
+    content: "*";
+  }
+
+  .dropdownConatiner {
+    position: absolute;
+    max-height: 300px;
+    width: 100%;
+    overflow: scroll;
+    background: $background;
+    box-shadow: 2px 4px 15px 0px rgba($black, 0.1);
+    z-index: 20;
+    border: 1px solid $off-white;
+
+    .dropdownEntry {
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        background: rgba($black, 0.5);
+      }
+    }
+  }
+
+  .errorContainer {
+    font-size: $font-12;
+    text-align: left;
+    color: $red;
+  }
+}
+
+.autoCompleteDisabled {
+  pointer-events: none;
+  background: $grey;
+}
