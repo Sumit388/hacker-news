@@ -1,0 +1,61 @@
+@use "@Styles/Base" as *;
+
+$distance-between-elemens: 12px;
+
+.homepageContainer {
+  @include container();
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+
+  .filterContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .searchField {
+      background: $off-white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      width: 100%;
+      margin-top: $distance-between-elemens;
+
+      @include responsive($screen-768) {
+        max-width: 600px;
+      }
+    }
+  }
+
+  .recentSearchesConatiner {
+    margin-top: $distance-between-elemens;
+
+    .recentEntries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: $distance-between-elemens;
+
+      .recentEntry {
+        background: $primary-gradient;
+        padding: 8px 16px;
+        border-radius: 20px;
+        max-width: 160px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: $font-16;
+        color: $black;
+        letter-spacing: 0;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .borderLine {
+    margin-top: 24px;
+    border-bottom: 0.5px solid $off-white;
+  }
+}
