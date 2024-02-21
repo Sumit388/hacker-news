@@ -140,11 +140,7 @@ const Pagination = (props: PaginationProps) => {
     <div className={Style.paginationContainer}>
       <ul>
         {currentPage !== 1 ? (
-          <li
-            style={{
-              width: "50px",
-            }}
-          >
+          <li>
             <a
               className={Style.paginationContainerPrev}
               href={url + (currentPage - 1)}
@@ -157,19 +153,11 @@ const Pagination = (props: PaginationProps) => {
             </a>
           </li>
         ) : (
-          <li
-            style={{
-              width: "50px",
-            }}
-          ></li>
+          <li />
         )}
         {listItems()}
         {currentPage < totalPages ? (
-          <li
-            style={{
-              width: "50px",
-            }}
-          >
+          <li>
             <a
               className={Style.paginationContainerNext}
               style={{
@@ -182,11 +170,7 @@ const Pagination = (props: PaginationProps) => {
             </a>
           </li>
         ) : (
-          <li
-            style={{
-              width: "50px",
-            }}
-          ></li>
+          <li />
         )}
       </ul>
     </div>

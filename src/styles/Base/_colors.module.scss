@@ -5,6 +5,7 @@ $white: #f3f6f7;
 $black: #000;
 $red: #d80000;
 $grey: #545454;
+$dull-white: #eee;
 
 // Gradients
 $primary-gradient: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
@@ -14,3 +15,4 @@ $secondary-gradient: linear-gradient(
   #784ba0 50%,
   #2b86c5 100%
 );
+$loader-gradient: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
