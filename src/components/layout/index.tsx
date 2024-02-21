@@ -22,4 +22,6 @@ const Layout: FunctionComponent<LayoutProps> = (Page) =>
     }
   };
 
+Layout.displayName = "Sumit Hacker News";
+
 export default Layout;

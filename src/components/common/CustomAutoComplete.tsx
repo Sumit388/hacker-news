@@ -5,11 +5,11 @@ import clsx from "clsx";
 /* //* Styles Imports */
 import Styles from "@Styles/common/CustomAutoComplete.module.scss";
 
-const CustomAutoComplete = (props) => {
+const CustomAutoComplete = (props: CustomAutoCompletePropsType) => {
   const menu = useRef(null);
 
   const [dropDownVisible, setDropDownVisible] = useState<boolean>(false);
-  const [value, setValue] = useState<object>(props?.defaultValue);
+  const [value, setValue] = useState<object | undefined>(props?.defaultValue);
   const [searchedOptions, setSearchedOptions] = useState<Array<object>>(
     props?.options
   );
@@ -43,7 +43,8 @@ const CustomAutoComplete = (props) => {
   };
 
   const closeOpenMenus = (e: MouseEvent) => {
-    if (menu.current && !dropDownVisible && !menu.current.contains(e.target)) {
+    const tempMenu = menu.current as unknown as Node;
+    if (tempMenu && !dropDownVisible && !tempMenu.contains(e.target as Node)) {
       setDropDownVisible(false);
     }
   };
@@ -97,7 +98,7 @@ const CustomAutoComplete = (props) => {
               <div
                 className={Styles.dropdownEntry}
                 onClick={() => handleOptionSelect(entry)}
-                key={props?.renderOption(entry)}
+                key={props?.renderOption(entry) as string}
               >
                 {props?.renderOption(entry)}
               </div>

@@ -1,6 +1,6 @@
 type CommentType = {
   author: string;
-  children: Comment[];
+  children: CommentType[];
   created_at: string;
   created_at_i: number;
   id: number;
@@ -16,7 +16,7 @@ type CommentType = {
 
 type StoryType = {
   author: string;
-  children: Comment[];
+  children: CommentType[];
   created_at: string;
   created_at_i: number;
   id: number;
@@ -30,4 +30,4 @@ type StoryType = {
   url: string;
 };
 
-type DetailsDataType = Story | Comment;
+type DetailsDataType = Story | CommentType;
