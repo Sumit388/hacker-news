@@ -26,6 +26,7 @@ Welcome to the Hacker News project! This project is built with the following tec
 1. Ensure your Node.js version is greater than 16.4.0.
 2. Install `pnpm` in your system.
 3. Run `pnpm install` to install dependencies.
+4. Add `.env.local` file with variable `NEXT_PUBLIC_SITEURL=http://localhost:3000` defined in it.
 4. Run `pnpm run dev` to start the development server.
 
 ## Server-Side Rendering
