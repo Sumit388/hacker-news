@@ -8,6 +8,14 @@ $distance-between-elemens: 12px;
   margin-bottom: 30px;
   box-sizing: border-box;
 
+  .headingSection {
+    min-height: 389px;
+
+    @include responsive($screen-768) {
+      min-height: 254px;
+    }
+  }
+
   .filterContainer {
     display: flex;
     align-items: center;

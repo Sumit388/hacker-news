@@ -88,7 +88,9 @@ const HomePage = ({
   return (
     <div className={Styles.homepageContainer}>
       {" "}
-      <HeadingSection handleChange={handleChange} />
+      <div className={Styles.headingSection}>
+        <HeadingSection handleChange={handleChange} />
+      </div>
       <DataSection loading={loading} listingData={listingData} />
       {listingData.hits.length > 0 && (
         <Pagination
@@ -103,7 +105,7 @@ const HomePage = ({
           url={(() => {
             const params = new URLSearchParams(searchParams.current);
             params.delete("page");
-            return "localhost:3000" + "?" + params + "&page=";
+            return HOST_URL + "?" + params + "&page=";
           })()}
         />
       )}
