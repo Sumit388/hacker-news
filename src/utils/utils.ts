@@ -16,3 +16,18 @@ export const formatDateTime = (dateTimeString: string) => {
 
   return `Date: ${formattedDate}, Time:${formattedTime}`;
 };
+
+export const extractComments = (data: DetailsDataType): CommentType[] => {
+  const comments: CommentType[] = [];
+
+  function extractCommentsRecursive(comment: CommentType) {
+    comments.push(comment);
+    comment.children.forEach(extractCommentsRecursive);
+  }
+
+  if ("children" in data) {
+    data.children.forEach(extractCommentsRecursive);
+  }
+
+  return comments;
+};

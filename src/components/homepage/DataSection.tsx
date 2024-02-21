@@ -7,6 +7,7 @@ import NoDetailsFound from "@Components/common/NoDetailsFound";
 
 /* //* Utils Imports */
 import { formatDateTime } from "@Utils/utils";
+import { HOST_URL } from "@Utils/urls";
 
 /* //* Styles Imports */
 import Styles from "@Styles/Homepage.module.scss";
@@ -35,7 +36,11 @@ const DataSection = ({
         <NoDetailsFound />
       ) : (
         listingData?.hits?.map((entry, index) => (
-          <a key={`${entry?.story_id}ind${index}`}>
+          <a
+            key={`${entry?.story_id}ind${index}`}
+            href={`${HOST_URL}/post/${entry?.objectID}`}
+            target="_blank"
+          >
             <div className={Styles.dataEntry}>
               <h2>{entry?.title}</h2>
               <p>Author : {entry?.author}</p>

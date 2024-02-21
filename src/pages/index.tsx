@@ -8,14 +8,13 @@ import { ToastContainer, toast } from "react-toastify";
 /* //* Components Imports */
 import Pagination from "@Components/common/Pagination";
 import DataSection from "@Components/homepage/DataSection";
+import Layout from "@Components/layout";
 
 /* //* Utils Imports */
-import { getListingData } from "@Utils/urls";
+import { getListingData, HOST_URL } from "@Utils/urls";
 
 /* //* Styles Imports */
 import Styles from "@Styles/Homepage.module.scss";
-import "@Styles/global.css";
-import "react-toastify/dist/ReactToastify.min.css";
 
 /* //* Dynamic Imports */
 const HeadingSection = dynamic(
@@ -68,8 +67,8 @@ const page = ({
     }
 
     const currentUrl = searchParams?.current?.toString()
-      ? `${window.location.pathname}?${searchParams.current}`
-      : window.location.pathname;
+      ? `${HOST_URL}?${searchParams.current}`
+      : HOST_URL;
 
     getData();
     window.history.pushState({}, "", currentUrl);
@@ -135,4 +134,4 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   };
 };
 
-export default page;
+export default Layout(page);
