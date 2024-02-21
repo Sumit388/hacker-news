@@ -2,10 +2,12 @@
 import { useState, useRef } from "react";
 import { GetServerSideProps } from "next";
 import axios from "axios";
+import dynamic from "next/dynamic";
+import { ToastContainer, toast } from "react-toastify";
 
 /* //* Components Imports */
 import Pagination from "@Components/common/Pagination";
-import HeadingSection from "@Components/homepage/HeadingSection";
+import DataSection from "@Components/homepage/DataSection";
 
 /* //* Utils Imports */
 import { getListingData } from "@Utils/urls";
@@ -13,7 +15,15 @@ import { getListingData } from "@Utils/urls";
 /* //* Styles Imports */
 import Styles from "@Styles/Homepage.module.scss";
 import "@Styles/global.css";
-import DataSection from "@Components/homepage/DataSection";
+import "react-toastify/dist/ReactToastify.min.css";
+
+/* //* Dynamic Imports */
+const HeadingSection = dynamic(
+  () => import("@Components/homepage/HeadingSection"),
+  {
+    ssr: false,
+  }
+);
 
 const page = ({
   data,
@@ -23,11 +33,6 @@ const page = ({
   queryString: string;
 }) => {
   const searchParams = useRef(new URLSearchParams(queryString));
-  //   const [addToSearch, previousSearches] = useStore((state: unknown) => [
-  //     state.addToSearch,
-  //     state.previousSearches,
-  //   ]);
-
   const [listingData, setListingData] = useState<ListingDataType>(data);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -38,8 +43,12 @@ const page = ({
         getListingData(searchParams.current.toString())
       );
       setListingData(data?.data);
-    } catch (error) {
+    } catch (error: ErrorType) {
       console.error(error);
+      toast.error(
+        error?.response?.data?.message ||
+          " Some error occurred. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -84,21 +93,24 @@ const page = ({
       {" "}
       <HeadingSection handleChange={handleChange} />
       <DataSection loading={loading} listingData={listingData} />
-      <Pagination
-        pageSize={20}
-        totalCount={Math.min(20 * listingData?.nbPages, 500)}
-        onClick={handlePageChange}
-        currentPage={
-          searchParams.current.has("page")
-            ? Number(searchParams.current.get("page"))
-            : 1
-        }
-        url={(() => {
-          const params = new URLSearchParams(searchParams.current);
-          params.delete("page");
-          return "localhost:3000" + "?" + params + "&page=";
-        })()}
-      />
+      {listingData.hits.length > 0 && (
+        <Pagination
+          pageSize={20}
+          totalCount={Math.min(20 * listingData?.nbPages, 500)}
+          onClick={handlePageChange}
+          currentPage={
+            searchParams.current.has("page")
+              ? Number(searchParams.current.get("page"))
+              : 1
+          }
+          url={(() => {
+            const params = new URLSearchParams(searchParams.current);
+            params.delete("page");
+            return "localhost:3000" + "?" + params + "&page=";
+          })()}
+        />
+      )}
+      <ToastContainer />
     </div>
   );
 };

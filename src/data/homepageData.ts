@@ -1,7 +1,10 @@
-export const SORTBY_OPTIONS = [
-  { label: "IB", value: "ib" },
-  { label: "CBSE", value: "cbse" },
-  { label: "ICSE", value: "icse" },
-  { label: "State Board", value: "state-board" },
-  { label: "Others", value: "others" },
+export const TAGS_OPTIONS = [
+  { label: "All", value: "" },
+  { label: "Story", value: "story" },
+  { label: "Comment", value: "comment" },
+  { label: "Poll", value: "poll" },
+  { label: "Poll Option", value: "pollopt" },
+  { label: "Show Hacker News", value: "show_hn" },
+  { label: "Ask Hacker News", value: "ask_hn" },
+  { label: "Front Page", value: "front_page" },
 ];

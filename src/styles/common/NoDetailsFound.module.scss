@@ -1,0 +1,19 @@
+@use "@Styles/Base" as *;
+
+.noDetailsContainer {
+  @include elevate();
+  margin: 6px 0px;
+  padding: 20px;
+  border-radius: 16px;
+  background: $grey;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+
+  p {
+    text-align: center;
+    font-size: $font-14;
+  }
+}

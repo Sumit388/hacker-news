@@ -9,7 +9,7 @@ import useDebounce from "@Hooks/useDebounce";
 import useStore from "@Hooks/useStore";
 
 /* //* Data Imports */
-import { SORTBY_OPTIONS } from "@Data/homepageData";
+import { TAGS_OPTIONS } from "@Data/homepageData";
 
 /* //* Styles Imports */
 import Styles from "@Styles/Homepage.module.scss";
@@ -19,24 +19,27 @@ const HeadingSection = ({
 }: {
   handleChange: (key: string, value?: string) => void;
 }) => {
-  const [sortByValue, setSortByValue] = useState<sortByOptionTypes>(
-    SORTBY_OPTIONS[0]
+  const [tagsValue, setTagsValue] = useState<sortByOptionTypes>(
+    TAGS_OPTIONS[0]
   );
-  const [inputValue, setInputValue] = useState<string>("");
+  // Still searching for the type for this.
+  const [addToSearch, previousSearches] = useStore((state: any) => [
+    state.addToSearch,
+    state.previousSearches,
+  ]);
 
   const handleInputChange = (value: string) => {
-    setInputValue(value);
     handleChange("query", value);
-    // if (value) addToSearch(value);
+    if (value) addToSearch(value);
   };
 
   const onSortByChange = (option: sortByOptionTypes) => {
-    setSortByValue(option);
-    handleChange("sort_by", option.value);
+    setTagsValue(option);
+    handleChange("tags", option.value);
   };
 
   return (
-    <>
+    <section>
       <h1>HACKER NEWS.</h1>
       <p>
         Your daily dose of hacking news is all here. Do you want to know
@@ -56,11 +59,11 @@ const HeadingSection = ({
         />
         <div className={Styles.sortByContainer}>
           <CustomAutoComplete
-            id="SortBy"
-            label="Sort By"
-            name={"Sort By"}
-            defaultValue={sortByValue}
-            options={SORTBY_OPTIONS}
+            id="tags"
+            label="Filter By Tags"
+            name={"tags"}
+            defaultValue={tagsValue}
+            options={TAGS_OPTIONS}
             onChange={onSortByChange}
             renderOption={(option: sortByOptionTypes) => (
               <div>{option?.label}</div>
@@ -76,7 +79,7 @@ const HeadingSection = ({
       <div className={Styles.recentSearchesConatiner}>
         <h2>Your Recent Searches</h2>
         <div className={Styles.recentEntries}>
-          {/* {previousSearches.map((val: string, index: string) => (
+          {previousSearches.map((val: string, index: string) => (
             <button
               className={Styles.recentEntry}
               title={val}
@@ -84,11 +87,11 @@ const HeadingSection = ({
             >
               {val}
             </button>
-          ))} */}
+          ))}
         </div>
       </div>
       <div className={Styles.borderLine} />
-    </>
+    </section>
   );
 };
 
