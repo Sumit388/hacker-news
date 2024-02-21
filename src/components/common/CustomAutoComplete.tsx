@@ -1,6 +1,5 @@
 /* //* Packages Imports */
 import { useState, useEffect, useRef } from "react";
-import clsx from "clsx";
 
 /* //* Styles Imports */
 import Styles from "@Styles/common/CustomAutoComplete.module.scss";
@@ -64,9 +63,7 @@ const CustomAutoComplete = (props: CustomAutoCompletePropsType) => {
 
   return (
     <div
-      className={clsx(Styles.autoCompleteContainer, {
-        [Styles.autoCompleteDisabled]: props?.disabled,
-      })}
+      className={Styles.autoCompleteContainer}
       onClick={(e) => e.stopPropagation()}
     >
       <input
